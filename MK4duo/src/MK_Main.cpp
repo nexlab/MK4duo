@@ -9822,9 +9822,9 @@ inline void gcode_M532() {
 
     // Define runplan for move axes
     #if IS_KINEMATIC
-			#define RUNPLAN(RATE_MM_S) planner.buffer_line_kinematic(destination, RATE_MM_S, active_extruder, active_driver);
+      #define RUNPLAN(RATE_MM_S) planner.buffer_line_kinematic(destination, RATE_MM_S, active_extruder, active_driver)
     #else
-      #define RUNPLAN(RATE_MM_S) line_to_destination(RATE_MM_S);
+      #define RUNPLAN(RATE_MM_S) line_to_destination(RATE_MM_S)
     #endif
 
     // Initial retract before move to filament change position
