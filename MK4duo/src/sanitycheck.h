@@ -1729,19 +1729,19 @@ static_assert(1 >= 0
  * Test required HEATER defines
  */
 #if HOTENDS > 3
-  #if HASNT(HEATER_3)
+  #if !HAS_HEATER_3
     #error DEPENDENCY ERROR: HEATER_3_PIN not EXIST for this board
   #endif
 #elif HOTENDS > 2
-  #if HASNT(HEATER_2)
+  #if !HAS_HEATER_2
     #error DEPENDENCY ERROR: HEATER_2_PIN not EXIST for this board
   #endif
 #elif HOTENDS > 1 || ENABLED(HEATERS_PARALLEL)
-  #if HASNT(HEATER_1)
+  #if !HAS_HEATER_1
     #error DEPENDENCY ERROR: HEATER_1_PIN not EXIST for this board
   #endif
 #elif HOTENDS > 0
-  #if HASNT(HEATER_0)
+  #if !HAS_HEATER_0
     #error DEPENDENCY ERROR: HEATER_0_PIN not EXIST for this board
   #endif
 #endif

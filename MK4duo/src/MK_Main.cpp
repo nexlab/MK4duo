@@ -13791,7 +13791,7 @@ void calculate_volumetric_multipliers() {
  */
 void manage_inactivity(bool ignore_stepper_queue/*=false*/) {
 
-  #if HAS(FIL_RUNOUT) && FILAMENT_RUNOUT_DOUBLE_CHECK > 0
+  #if HAS_FIL_RUNOUT && FILAMENT_RUNOUT_DOUBLE_CHECK > 0
     static bool filament_double_check = false;
     static millis_t filament_switch_time = 0;
     if ((IS_SD_PRINTING || print_job_counter.isRunning()) && READ(FIL_RUNOUT_PIN) == FIL_RUNOUT_PIN_INVERTING) {
@@ -13806,7 +13806,7 @@ void manage_inactivity(bool ignore_stepper_queue/*=false*/) {
         filament_switch_time = millis() + FILAMENT_RUNOUT_DOUBLE_CHECK;
       }
     }
-  #elif HAS(FIL_RUNOUT)
+  #elif HAS_FIL_RUNOUT
     if ((IS_SD_PRINTING || print_job_counter.isRunning()) && READ(FIL_RUNOUT_PIN) == FIL_RUNOUT_PIN_INVERTING)
       handle_filament_runout();
   #endif
@@ -14262,7 +14262,7 @@ void setup() {
 
   HAL::hwSetup();
 
-  #if ENABLED(FILAMENT_RUNOUT_SENSOR)
+  #if HAS_FIL_RUNOUT
     setup_filrunoutpin();
   #endif
 
