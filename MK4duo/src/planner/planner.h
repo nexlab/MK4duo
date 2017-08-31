@@ -306,6 +306,14 @@ class Planner {
       #if HAS_LEVELING && IS_CARTESIAN
         apply_leveling(lx, ly, lz);
       #endif
+      #if ENABLED(ZWOBBLE)
+        // Calculate ZWobble
+        zwobble.InsertCorrection(lz);
+      #endif
+      #if ENABLED(HYSTERESIS)
+        // Calculate Hysteresis
+        hysteresis.InsertCorrection(lx, ly, lz, e);
+      #endif
       _buffer_line(lx, ly, lz, e, fr_mm_s, extruder, driver);
     }
 

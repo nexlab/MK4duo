@@ -55,10 +55,10 @@
       void Set(float x_mm, float y_mm, float z_mm, float e_mm);
       void SetAxis(uint8_t axis, float mm);
       void ReportToSerial();
+      void calcSteps();
       void InsertCorrection(const float x, const float y, const float z, const float e);
 
     private:
-      void      calcSteps();
       float     m_hysteresis_mm[NUM_AXIS];
       long      m_hysteresis_steps[NUM_AXIS];
       uint8_t   m_prev_direction_bits;
