@@ -180,9 +180,4 @@
 
 #endif // ULTRA_LCD
 
-#if ENABLED(SDSUPPORT)
-  extern void set_sd_dot();
-  extern void unset_sd_dot();
-#endif
-
 #endif // ULTRALCD_H

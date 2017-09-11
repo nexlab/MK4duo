@@ -303,7 +303,7 @@ void EEPROM::Postprocess() {
         SERIAL_LM(ER, MSG_NO_CARD);
         return false;
       }
-      set_sd_dot();
+
       card.setroot(true);
       card.startWrite((char *)"EEPROM.bin", false);
       EEPROM_WRITE(version);
@@ -584,7 +584,6 @@ void EEPROM::Postprocess() {
 
     #if HAS(EEPROM_SD)
       card.finishWrite();
-      unset_sd_dot();
     #endif
 
     return !eeprom_write_error;
@@ -603,7 +602,6 @@ void EEPROM::Postprocess() {
 
     #if HAS(EEPROM_SD)
       if (IS_SD_INSERTED || !card.isFileOpen() || !card.sdprinting || card.cardOK) {
-        set_sd_dot();
         card.setroot(true);
         card.selectFile((char *)"EEPROM.bin", true);
         EEPROM_READ(stored_ver);
@@ -876,7 +874,6 @@ void EEPROM::Postprocess() {
       #if HAS(EEPROM_SD)
 
         card.closeFile();
-        unset_sd_dot();
         if (eeprom_read_error)
           Factory_Settings();
         else {

@@ -877,7 +877,6 @@ void CardReader::ResetDefault() {
   void CardReader::StoreSettings() {
     if (!IS_SD_INSERTED || isFileOpen() || sdprinting) return;
 
-    set_sd_dot();
     setroot(true);
     startWrite((char *)CFG_SD_FILE, false);
     char buff[CFG_SD_MAX_VALUE_LEN];
@@ -898,13 +897,11 @@ void CardReader::ResetDefault() {
 
     finishWrite();
     setlast();
-    unset_sd_dot();
   }
 
   void CardReader::RetrieveSettings(bool addValue) {
     if (!IS_SD_INSERTED || isFileOpen() || sdprinting || !cardOK) return;
 
-    set_sd_dot();
     char key[CFG_SD_MAX_KEY_LEN], value[CFG_SD_MAX_VALUE_LEN];
     int k_idx;
     int k_len, v_len;
@@ -960,7 +957,6 @@ void CardReader::ResetDefault() {
     print_job_counter.loaded = true;
     closeFile();
     setlast();
-    unset_sd_dot();
   }
 
   int CardReader::KeyIndex(char *key) {  // At the moment a binary search algorithm is used for simplicity, if it will be necessary (Eg. tons of key), an hash search algorithm will be implemented.
