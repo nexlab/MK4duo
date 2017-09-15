@@ -464,10 +464,7 @@ uint16_t max_display_update_time = 0;
     no_reentry = true;
     screenFunc_t old_screen = currentScreen;
     lcd_goto_screen(lcd_synchronize);
-    while (commands_in_queue) {
-      idle();
-      stepper.synchronize();
-    }
+    stepper.synchronize();
     no_reentry = false;
     lcd_goto_screen(old_screen);
   }
