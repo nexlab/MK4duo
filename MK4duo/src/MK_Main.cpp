@@ -3029,7 +3029,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
     #define TEMP_CONDITIONS (wants_to_cool ? thermalManager.isCoolingHotend(target_extruder) : thermalManager.isHeatingHotend(target_extruder))
   #endif
 
-  float theTarget = -1.0, old_temp = 9999.0;
+  float target_temp = -1.0, old_temp = 9999.0;
   bool wants_to_cool = false;
   wait_for_heatup = true;
   millis_t now, next_temp_ms = 0, next_cool_check_ms = 0;
@@ -3043,8 +3043,8 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
 
   do {
     // Target temperature might be changed during the loop
-    if (theTarget != thermalManager.degTargetHotend(target_extruder))
-      theTarget = thermalManager.degTargetHotend(target_extruder);
+    if (target_temp != thermalManager.degTargetHotend(target_extruder))
+      target_temp = thermalManager.degTargetHotend(target_extruder);
 
     wants_to_cool = thermalManager.isCoolingHotend(target_extruder);
 
@@ -3084,7 +3084,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
 
     #if TEMP_RESIDENCY_TIME > 0
 
-      float temp_diff = FABS(theTarget - temp);
+      float temp_diff = FABS(target_temp - temp);
 
       if (!residency_start_ms) {
         // Start the TEMP_RESIDENCY_TIME timer when we reach target temp for the first time.
@@ -3144,7 +3144,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
       #define TEMP_BED_CONDITIONS (wants_to_cool ? thermalManager.isCoolingBed() : thermalManager.isHeatingBed())
     #endif
 
-    float theTarget = -1.0, old_temp = 9999.0;
+    float target_temp = -1.0, old_temp = 9999.0;
     bool wants_to_cool = false;
     wait_for_heatup = true;
     millis_t now, next_temp_ms = 0, next_cool_check_ms = 0;
@@ -3161,8 +3161,8 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
     // Wait for temperature to come close enough
     do {
       // Target temperature might be changed during the loop
-      if (theTarget != thermalManager.degTargetBed())
-        theTarget = thermalManager.degTargetBed();
+      if (target_temp != thermalManager.degTargetBed())
+        target_temp = thermalManager.degTargetBed();
 
       wants_to_cool = thermalManager.isCoolingBed();
 
@@ -3202,7 +3202,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
 
       #if TEMP_BED_RESIDENCY_TIME > 0
 
-        float temp_diff = FABS(theTarget - temp);
+        float temp_diff = FABS(target_temp - temp);
 
         if (!residency_start_ms) {
           // Start the TEMP_BED_RESIDENCY_TIME timer when we reach target temp for the first time.
@@ -3245,7 +3245,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
       #define TEMP_CHAMBER_CONDITIONS (wants_to_heat ? thermalManager.isHeatingChamber() : thermalManager.isCoolingChamber())
     #endif
 
-    float theTarget = -1;
+    float target_temp = -1;
     bool wants_to_heat;
     wait_for_heatup = true;
     millis_t now, next_temp_ms = 0;
@@ -3255,8 +3255,8 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
     // Wait for temperature to come close enough
     do {
       // Target temperature might be changed during the loop
-      if (theTarget != thermalManager.degTargetChamber())
-        theTarget = thermalManager.degTargetChamber();
+      if (target_temp != thermalManager.degTargetChamber())
+        target_temp = thermalManager.degTargetChamber();
 
       wants_to_heat = thermalManager.isHeatingChamber();
 
@@ -3286,7 +3286,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
 
       #if TEMP_CHAMBER_RESIDENCY_TIME > 0
 
-        float temp_diff = FABS(theTarget - thermalManager.degTargetChamber());
+        float temp_diff = FABS(target_temp - thermalManager.degTargetChamber());
 
         if (!residency_start_ms) {
           // Start the TEMP_CHAMBER_RESIDENCY_TIME timer when we reach target temp for the first time.
@@ -3316,7 +3316,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
       #define TEMP_COOLER_CONDITIONS (wants_to_heat ? thermalManager.isHeatingCooler() : thermalManager.isCoolingCooler())
     #endif
 
-    float theTarget = -1;
+    float target_temp = -1;
     bool wants_to_heat;
     wait_for_heatup = true;
     millis_t now, next_temp_ms = 0;
@@ -3326,8 +3326,8 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
     // Wait for temperature to come close enough
     do {
       // Target temperature might be changed during the loop
-      if (theTarget != thermalManager.degTargetCooler())
-        theTarget = thermalManager.degTargetCooler();
+      if (target_temp != thermalManager.degTargetCooler())
+        target_temp = thermalManager.degTargetCooler();
 
       wants_to_heat = thermalManager.isHeatingCooler();
 
@@ -3336,7 +3336,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
 
       // Prevent a wait-forever situation if R is misused i.e. M190 C R50
       // Simply don't wait to heat a cooler over 25C
-      if (wants_to_heat && theTarget > 25) break;
+      if (wants_to_heat && target_temp > 25) break;
 
       now = millis();
       if (ELAPSED(now, next_temp_ms)) { //Print Temp Reading every 1 second while heating up.
@@ -3361,7 +3361,7 @@ inline void wait_heater(bool no_wait_for_cooling = true) {
 
       #if TEMP_COOLER_RESIDENCY_TIME > 0
 
-        float temp_diff = FABS(theTarget - thermalManager.degTargetCooler());
+        float temp_diff = FABS(target_temp - thermalManager.degTargetCooler());
 
         if (!residency_start_ms) {
           // Start the TEMP_COOLER_RESIDENCY_TIME timer when we reach target temp for the first time.
