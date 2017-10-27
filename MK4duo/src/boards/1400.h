@@ -88,6 +88,7 @@
 
 #define SDPOWER                 -1
 #define SDSS                     4
+#define SD_DETECT_PIN           14
 #define LED_PIN                 -1
 
 #define ORIG_FAN_PIN 	           8  // FET5
@@ -142,6 +143,5 @@
     #define BTN_EN2             51
     #define BTN_ENC             30
 
-    #define SD_DETECT_PIN       14
    #endif 
 #endif // ULTRA_LCD
