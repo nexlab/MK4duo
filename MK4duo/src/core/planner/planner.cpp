@@ -197,7 +197,8 @@ void Planner::reverse_pass() {
     // Last/newest block in buffer:
     float max_entry_speed = current->max_entry_speed;
     if (current->entry_speed != max_entry_speed) {
-      current->entry_speed = (TEST(current->flag, BLOCK_BIT_NOMINAL_LENGTH))
+      const block_t * const next = &block_buffer[endnr];
+      current->entry_speed = (TEST(current->flag, BLOCK_BIT_NOMINAL_LENGTH) || current->max_entry_speed <= next->entry_speed)
         ? max_entry_speed
         : min(max_entry_speed, max_allowable_speed(-current->acceleration, MINIMUM_PLANNER_SPEED, current->millimeters));
       SBI(current->flag, BLOCK_BIT_RECALCULATE);
@@ -219,7 +220,7 @@ void Planner::forward_pass_kernel(const block_t * const previous, block_t* const
   // full speed change within the block, we need to adjust the entry speed accordingly. Entry
   // speeds have already been reset, maximized, and reverse planned by reverse planner.
   // If nominal length is true, max junction speed is guaranteed to be reached. No need to recheck.
-  if (!TEST(previous->flag, BLOCK_BIT_NOMINAL_LENGTH)) {
+  if (!TEST(previous->flag, BLOCK_BIT_NOMINAL_LENGTH) && previous->entry_speed < current->entry_speed) {
     if (previous->entry_speed < current->entry_speed) {
       float entry_speed = min(current->entry_speed,
                                max_allowable_speed(-previous->acceleration, previous->entry_speed, previous->millimeters));
