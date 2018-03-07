@@ -82,13 +82,13 @@
  * 999 : Dummy Table that ALWAYS reads 100 degC or the temperature defined below.                    *
  *                                                                                                   *
  *****************************************************************************************************/
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 999
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
 #define TEMP_SENSOR_BED 0
 #define TEMP_SENSOR_CHAMBER 0
-#define TEMP_SENSOR_COOLER 0
+#define TEMP_SENSOR_COOLER 40
 
 // Thermistor series resistor value in Ohms (see on your board)
 #define THERMISTOR_SERIES_RS 4700.0
@@ -105,7 +105,7 @@
 
 // Use it for Testing or Development purposes. NEVER for production machine.
 #define DUMMY_THERMISTOR_998_VALUE 25
-#define DUMMY_THERMISTOR_999_VALUE 25
+#define DUMMY_THERMISTOR_999_VALUE 200
 /*****************************************************************************************/
 
 
@@ -330,10 +330,10 @@
 // If your configuration is significantly different than this and you don't understand the issues involved, you probably
 // shouldn't use cooler PID until someone else verifies your hardware works.
 // If this is enabled, find your own PID constants below.
-#define PIDTEMPCOOLER false
+#define PIDTEMPCOOLER true
 
 // Enable fast PWM for cooler
-//#define FAST_PWM_COOLER
+#define FAST_PWM_COOLER
 
 #define COOLER_HYSTERESIS 2 //only disable heating if T<target-COOLER_HYSTERESIS and enable heating if T<target+COOLER_HYSTERESIS (works only if COOLER_LIMIT_SWITCHING is enabled)
 #define COOLER_CHECK_INTERVAL 5000 //ms between checks in bang-bang control
@@ -342,15 +342,15 @@
 // all forms of cooler control obey this (PID, bang-bang, bang-bang with hysteresis)
 // setting this to anything other than 255 enables a form of PWM to the cooler,
 // so you shouldn't use it unless you are OK with PWM on your cooler.  (see the comment on enabling PIDTEMPCOOLER)
-#define COOLER_PID_MAX       255  // Limits current to cooler while in PID mode;        255 = full current
-#define COOLER_PID_DRIVE_MIN  80  // Limits min current to cooler while PID is active;    0 = no current
-#define COOLER_PID_DRIVE_MAX 255  // Limits max current to cooler while PID is active;  255 = full current
+#define COOLER_PID_MAX       200  // Limits current to cooler while in PID mode;        255 = full current
+#define COOLER_PID_DRIVE_MIN  0  // Limits min current to cooler while PID is active;    0 = no current
+#define COOLER_PID_DRIVE_MAX 201  // Limits max current to cooler while PID is active;  255 = full current
 
 // 120v 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-#define DEFAULT_coolerKp 10.00
-#define DEFAULT_coolerKi .023
-#define DEFAULT_coolerKd 305.4
+#define DEFAULT_coolerKp 40.00
+#define DEFAULT_coolerKi .3
+#define DEFAULT_coolerKd 50.4
 
 // FIND YOUR OWN: "M303 E-3 C8 S90" to run autotune on the cooler at 90 degreesC for 8 cycles.
 /***********************************************************************/
@@ -424,7 +424,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***      *
  *                                                                     *
  ***********************************************************************/
-#define PREVENT_COLD_EXTRUSION
+//#define PREVENT_COLD_EXTRUSION
 #define EXTRUDE_MINTEMP 170                 // Degree Celsius
 
 // This option prevents a single extrusion longer than EXTRUDE_MAXLENGTH.

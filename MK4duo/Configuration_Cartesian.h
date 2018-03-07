@@ -68,7 +68,7 @@
  * Displayed in the LCD "Ready" message.                                                 *
  *                                                                                       *
  *****************************************************************************************/
-#define CUSTOM_MACHINE_NAME "Prusa I3"
+#define CUSTOM_MACHINE_NAME "K40 Laser"
 /*****************************************************************************************/
 
 
@@ -302,7 +302,7 @@
  * Change (or reverse the motor connector) if an axis goes the wrong way.                *
  *                                                                                       *
  *****************************************************************************************/
-#define INVERT_X_DIR false
+#define INVERT_X_DIR true
 #define INVERT_Y_DIR false
 #define INVERT_Z_DIR false
 #define INVERT_E0_DIR false
@@ -337,11 +337,11 @@
  * Travel limits after homing (units are in mm)                                          *
  *                                                                                       *
  *****************************************************************************************/
-#define X_MAX_POS 200
+#define X_MAX_POS 337
 #define X_MIN_POS 0
-#define Y_MAX_POS 200
+#define Y_MAX_POS 230
 #define Y_MIN_POS 0
-#define Z_MAX_POS 200
+#define Z_MAX_POS 75
 #define Z_MIN_POS 0
 #define E_MIN_POS 0
 /*****************************************************************************************/
@@ -531,9 +531,9 @@
 //#define BED_CENTER_AT_0_0
 
 // Manually set the home position. Leave these undefined for automatic settings.
-//#define MANUAL_X_HOME_POS 0
-//#define MANUAL_Y_HOME_POS 0
-//#define MANUAL_Z_HOME_POS 0
+#define MANUAL_X_HOME_POS 0
+#define MANUAL_Y_HOME_POS 0
+#define MANUAL_Z_HOME_POS 0
 /*****************************************************************************************/
 
 
@@ -559,7 +559,7 @@
  *                                                                                       *
  *****************************************************************************************/
 // Default steps per unit               X,  Y,    Z,  E0...(per extruder)
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 3200, 625, 625, 625, 625}
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7401, 157.4802, 6047.2440, 0, 0, 0, 0}
 /*****************************************************************************************/
 
 
@@ -567,9 +567,9 @@
  ********************************** Axis feedrate ****************************************
  *****************************************************************************************/
 //                                       X,   Y, Z,  E0...(per extruder). (mm/sec)
-#define DEFAULT_MAX_FEEDRATE          {300, 300, 2, 100, 100, 100, 100}
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 100, 25, 0, 0, 0}
 // Feedrates for manual moves along        X,     Y,     Z,  E from panel
-#define MANUAL_FEEDRATE               {50*60, 50*60, 4*60, 10*60}
+#define MANUAL_FEEDRATE               {50*60, 50*60, 4*60, 60}
 // Minimum feedrate
 #define DEFAULT_MINIMUMFEEDRATE       0.0
 #define DEFAULT_MINTRAVELFEEDRATE     0.0
@@ -584,13 +584,13 @@
  ******************************** Axis accelleration *************************************
  *****************************************************************************************/
 //  Maximum start speed for accelerated moves.    X,    Y,  Z,   E0...(per extruder)
-#define DEFAULT_MAX_ACCELERATION              {3000, 3000, 50, 1000, 1000, 1000, 1000}
+#define DEFAULT_MAX_ACCELERATION              {2000, 2000, 50, 1000, 1000, 1000, 1000}
 //  Maximum acceleration in mm/s^2 for retracts   E0... (per extruder)
-#define DEFAULT_RETRACT_ACCELERATION          {10000, 10000, 10000, 10000}
+#define DEFAULT_RETRACT_ACCELERATION          {2000, 2000, 2000, 2000}
 //  X, Y, Z and E* maximum acceleration in mm/s^2 for printing moves
-#define DEFAULT_ACCELERATION          3000
+#define DEFAULT_ACCELERATION          2000
 //  X, Y, Z acceleration in mm/s^2 for travel (non printing) moves
-#define DEFAULT_TRAVEL_ACCELERATION   3000
+#define DEFAULT_TRAVEL_ACCELERATION   2000
 /*****************************************************************************************/
 
 
@@ -618,8 +618,8 @@
  ************************************ Homing feedrate ************************************
  *****************************************************************************************/
 // Homing speeds (mm/m)
-#define HOMING_FEEDRATE_X (50*60)
-#define HOMING_FEEDRATE_Y (50*60)
+#define HOMING_FEEDRATE_X (100*60)
+#define HOMING_FEEDRATE_Y (100*60)
 #define HOMING_FEEDRATE_Z (2*60)
 
 // Homing hits each endstop, retracts by these distances, then does a slower bump.
@@ -642,9 +642,9 @@
  * For the other hotends it is their distance from the hotend 0.                         *
  *                                                                                       *
  *****************************************************************************************/
-#define HOTEND_OFFSET_X {0.0, 0.0, 0.0, 0.0} // (in mm) for each hotend, offset of the hotend on the X axis
-#define HOTEND_OFFSET_Y {0.0, 0.0, 0.0, 0.0} // (in mm) for each hotend, offset of the hotend on the Y axis
-#define HOTEND_OFFSET_Z {0.0, 0.0, 0.0, 0.0} // (in mm) for each hotend, offset of the hotend on the Z axis
+//#define HOTEND_OFFSET_X {0.0, 0.0, 0.0, 0.0} // (in mm) for each hotend, offset of the hotend on the X axis
+//#define HOTEND_OFFSET_Y {0.0, 0.0, 0.0, 0.0} // (in mm) for each hotend, offset of the hotend on the Y axis
+//#define HOTEND_OFFSET_Z {0.0, 0.0, 0.0, 0.0} // (in mm) for each hotend, offset of the hotend on the Z axis
 /*****************************************************************************************/
 
 

@@ -963,13 +963,13 @@
  * You also need to set FLOWMETER PIN in Configurations_pins.h            *
  *                                                                        *
  **************************************************************************/
-//#define FLOWMETER_SENSOR
+#define FLOWMETER_SENSOR
 
 #define FLOWMETER_MAXFLOW  6.0      // Liters per minute max
 #define FLOWMETER_MAXFREQ  55       // frequency of pulses at max flow
 
 // uncomment this to kill print job under the min flow rate, in liters/minute
-//#define MINFLOW_PROTECTION 4      
+#define MINFLOW_PROTECTION 4      
 /**************************************************************************/
 
 
@@ -1027,7 +1027,7 @@
  * Uncomment EEPROM FLASH for use writing EEPROM on Flash Memory (Only for DUE)                                         *
  *                                                                                                                      *
  ************************************************************************************************************************/
-//#define EEPROM_SETTINGS
+#define EEPROM_SETTINGS
 
 //#define EEPROM_CHITCHAT // Uncomment this to enable EEPROM Serial responses.
 //#define EEPROM_SD
@@ -1164,7 +1164,7 @@
 //#define SHOW_CUSTOM_BOOTSCREEN
 #define STRING_SPLASH_LINE1 "v" SHORT_BUILD_VERSION       // will be shown during bootup in line 1
 #define STRING_SPLASH_LINE2 STRING_DISTRIBUTION_DATE      // will be shown during bootup in line 2
-#define BOOTSCREEN_TIMEOUT 2500
+#define BOOTSCREEN_TIMEOUT 4000
 
 // LCD TYPE
 //
@@ -1361,7 +1361,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 // MakerLab Mini Panel with graphic
 // controller and SD support - http://reprap.org/wiki/Mini_panel
@@ -1666,7 +1666,7 @@
  * Check also Configuration_Laser.h                                       *
  *                                                                        *
  **************************************************************************/
-//#define LASER
+#define LASER
 /**************************************************************************/
 
 
