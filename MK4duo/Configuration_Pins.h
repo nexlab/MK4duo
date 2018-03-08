@@ -231,7 +231,7 @@
 #endif
 
 #if ENABLED(FLOWMETER_SENSOR)
-  #define FLOWMETER_PIN NoPin
+  #define FLOWMETER_PIN 21
 #endif
 
 #if ENABLED(POWER_CONSUMPTION)

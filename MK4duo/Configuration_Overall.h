@@ -28,7 +28,3 @@
  *   Firmware Version V4.3.5   *
  *******************************/
 
-#define COOLER_PIN 2
-#define FLOWMETER_PIN 21
-
-
