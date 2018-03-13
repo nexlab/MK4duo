@@ -185,11 +185,11 @@
  ***********************************************************************/
 // This defines the number of extruder real or virtual
 // 0,1,2,3,4,5,6
-#define EXTRUDERS 1
+#define EXTRUDERS 0
 
 // This defines the number of Driver extruder you have and use
 // 0,1,2,3,4,5,6
-#define DRIVER_EXTRUDERS 1
+#define DRIVER_EXTRUDERS 0
 /***********************************************************************/
 
 #endif /* _CONFIGURATION_BASIC_H_ */
