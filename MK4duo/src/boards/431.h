@@ -105,7 +105,6 @@
 #define ORIG_Z3_MAX_PIN            NoPin
 #define ORIG_Z4_MIN_PIN            NoPin
 #define ORIG_Z4_MAX_PIN            NoPin
-#define ORIG_E_MIN_PIN             NoPin
 #define ORIG_Z_PROBE_PIN           NoPin
 
 //###SINGLE_ENDSTOP
@@ -120,7 +119,7 @@
 #define ORIG_HEATER_3_PIN          NoPin
 #define ORIG_HEATER_BED_PIN         8
 #define ORIG_HEATER_CHAMBER_PIN    NoPin
-#define ORIG_COOLER_PIN            NoPin
+#define ORIG_COOLER_PIN             2
 
 //###TEMPERATURE
 #define ORIG_TEMP_0_PIN            13
@@ -158,6 +157,8 @@
 #define ORIG_LASER_PWR_PIN          5
 #define ORIG_LASER_PWM_PIN          6
 
+//###FLOWMETER
+#define ORIG_FLOMETER_PIN          21
 
 
 //###IF_BLOCKS

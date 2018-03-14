@@ -106,7 +106,6 @@
 #define ORIG_Z3_MAX_PIN            NoPin
 #define ORIG_Z4_MIN_PIN            NoPin
 #define ORIG_Z4_MAX_PIN            NoPin
-#define ORIG_E_MIN_PIN             NoPin
 #define ORIG_Z_PROBE_PIN           NoPin
 
 //###SINGLE_ENDSTOP
@@ -145,8 +144,6 @@
 #define SERVO3_PIN                  6
 
 //###MISC
-#define EEPROM_I2C
-#define E2END 0x2000
 #define ORIG_PS_ON_PIN             24
 #define ORIG_BEEPER_PIN            44
 #define LED_PIN                    NoPin
@@ -160,6 +157,9 @@
 //###LASER
 #define ORIG_LASER_PWR_PIN         NoPin
 #define ORIG_LASER_PWM_PIN         NoPin
+
+//###FLOWMETER
+#define ORIG_FLOMETER_PIN          NoPin
 
 
 //###UNKNOWN_PINS

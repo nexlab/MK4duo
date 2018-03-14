@@ -105,7 +105,6 @@
 #define ORIG_Z3_MAX_PIN            NoPin
 #define ORIG_Z4_MIN_PIN            NoPin
 #define ORIG_Z4_MAX_PIN            NoPin
-#define ORIG_E_MIN_PIN             NoPin
 #define ORIG_Z_PROBE_PIN           NoPin
 
 //###SINGLE_ENDSTOP
@@ -159,6 +158,9 @@
 #define ORIG_LASER_PWM_PIN         NoPin
 
 
+//###FLOWMETER
+#define ORIG_FLOMETER_PIN          NoPin
+
 //###UNKNOWN_PINS
 #define LCD_PINS_RS        19
 #define LCD_PINS_ENABLE    42
@@ -170,3 +172,4 @@
 #define BTN_EN2            12
 #define BTN_ENC            43
 //@@@
+

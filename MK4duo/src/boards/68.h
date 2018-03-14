@@ -105,7 +105,6 @@
 #define ORIG_Z3_MAX_PIN            NoPin
 #define ORIG_Z4_MIN_PIN            NoPin
 #define ORIG_Z4_MAX_PIN            NoPin
-#define ORIG_E_MIN_PIN             NoPin
 #define ORIG_Z_PROBE_PIN           NoPin
 
 //###SINGLE_ENDSTOP
@@ -158,6 +157,8 @@
 #define ORIG_LASER_PWR_PIN         NoPin
 #define ORIG_LASER_PWM_PIN         NoPin
 
+//###FLOWMETER
+#define ORIG_FLOMETER_PIN          NoPin
 
 //###UNKNOWN_PINS
 #define MAX6675_SS_PIN          66  // Do not use pin 49 as this is tied to the switch inside the SD card socket to detect if there is an SD card present

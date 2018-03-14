@@ -336,6 +336,7 @@ void Commands::get_serial() {
 void Commands::flush_and_request_resend() {
   HAL::serialFlush();
   SERIAL_LV(RESEND, gcode_LastN + 1);
+  ok_to_send();
 }
 
 /**
@@ -611,7 +612,7 @@ bool Commands::get_target_heater(int8_t &h) {
       return true;
     }
   #endif
-  #if HAS_HEATER_COOLER
+  #if HAS_COOLER
     else if (h == -3) {
       h = COOLER_INDEX;
       return true;
